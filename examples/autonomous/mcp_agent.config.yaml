@@ -1,0 +1,56 @@
+execution_engine: asyncio
+
+logger:
+  transports: [console, file]
+  level: info
+  path: "logs/autonomous-mcp-agent.jsonl"
+
+mcp:
+  servers:
+    # File system access
+    filesystem:
+      command: "npx"
+      args: ["-y", "@modelcontextprotocol/server-filesystem", "/", "C:/Users/joelf/OneDrive/Joels Files/Documents/GitHub/mcp-agent"]
+      description: "File system operations for reading and writing files"
+    
+    # Web fetching
+    fetch:
+      command: "uvx"
+      args: ["mcp-server-fetch"]
+      description: "Fetch content from URLs and web resources"
+    
+    # Git operations (if available)
+    git:
+      command: "uvx"
+      args: ["mcp-server-git", "--repository", "C:/Users/joelf/OneDrive/Joels Files/Documents/GitHub/mcp-agent"]
+      description: "Git repository operations"
+    
+    # GitHub integration (if available)
+    github:
+      command: "uvx"
+      args: ["mcp-server-github"]
+      description: "GitHub repository management"
+    
+    # SQLite database (if available)
+    sqlite:
+      command: "uvx"
+      args: ["mcp-server-sqlite", "--db-path", "./data/autonomous.db"]
+      description: "SQLite database operations"
+
+# OpenAI configuration
+openai:
+  default_model: gpt-4o
+  
+# Anthropic configuration  
+anthropic:
+  default_model: claude-3-5-sonnet-20241022
+
+# Autonomous configuration
+autonomous:
+  max_agents: 5
+  max_execution_time: 300
+  prefer_simple_patterns: false
+  require_human_approval: false
+  default_llm_provider: "openai"
+  enable_fallbacks: true
+  log_decisions: true

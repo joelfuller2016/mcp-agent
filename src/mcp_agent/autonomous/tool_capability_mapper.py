@@ -13,7 +13,7 @@ from dataclasses import dataclass
 from enum import Enum
 
 from mcp_agent.mcp.gen_client import gen_client
-from mcp_agent.config import Config
+from mcp_agent.config import Settings
 
 
 class ToolCategory(Enum):
@@ -65,8 +65,8 @@ class ToolCapabilityMapper:
     for intelligent tool selection.
     """
     
-    def __init__(self, config: Optional[Config] = None):
-        self.config = config or Config()
+    def __init__(self, config: Optional[Settings] = None):
+        self.config = config or Settings()
         self.logger = logging.getLogger(__name__)
         self.server_profiles: Dict[str, MCPServerProfile] = {}
         self.capability_map: Dict[ToolCategory, List[str]] = {}

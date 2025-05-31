@@ -12,7 +12,7 @@ from dataclasses import dataclass
 import time
 
 from mcp_agent.app import MCPApp
-from mcp_agent.config import Config
+from mcp_agent.config import Settings
 from mcp_agent.workflows.llm.augmented_llm import AugmentedLLM
 from mcp_agent.workflows.llm.augmented_llm_openai import OpenAIAugmentedLLM
 from mcp_agent.workflows.llm.augmented_llm_anthropic import AnthropicAugmentedLLM

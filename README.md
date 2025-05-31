@@ -21,6 +21,41 @@
 <a href="https://github.com/lastmile-ai/mcp-agent/blob/main/LICENSE"><img src="https://img.shields.io/pypi/l/mcp-agent" /></a>
 </p>
 
+## 🚀 Current Development Status
+
+> **This fork includes advanced autonomous agent capabilities beyond the base mcp-agent framework**
+
+### 🎯 **Strategic Focus**
+This project extends the foundational mcp-agent framework with sophisticated **autonomous agent capabilities**, positioning it as the most advanced MCP-based agent framework available.
+
+### 📋 **Project Planning**
+- 📊 **[Complete Development Roadmap](./PROJECT_ROADMAP.md)** - Comprehensive 3-phase development plan
+- 🚨 **[Immediate Action Plan](./IMMEDIATE_ACTION_PLAN.md)** - Critical Phase 1 tasks and debugging steps
+
+### ✅ **What's Working**
+- Core MCP framework (MCPApp, Agent, AugmentedLLM)
+- All Anthropic "Building Effective Agents" patterns implemented
+- Multiple LLM provider support (OpenAI, Anthropic, Azure, Google, Cohere, Bedrock)
+- Advanced workflow patterns (Parallel, Router, Orchestrator, Evaluator-Optimizer, Swarm)
+- Production features (Temporal integration, human input, durable execution)
+
+### 🤖 **Advanced Autonomous Features**
+- **AutonomousOrchestrator**: Self-managing workflow execution
+- **DynamicAgentFactory**: Runtime agent creation based on requirements
+- **TaskAnalyzer**: Intelligent task decomposition and planning
+- **ToolDiscovery**: Automatic capability detection and mapping
+- **DecisionEngine**: Strategic decision making for workflows
+- **MetaCoordinator**: High-level orchestration and supervision
+
+### 🚨 **Current Critical Issues (Phase 1 Priority)**
+- Autonomous module import failures - blocking advanced functionality
+- GitHub Actions CI/CD pipeline issues
+- Need end-to-end validation of autonomous components
+
+**👉 See [IMMEDIATE_ACTION_PLAN.md](./IMMEDIATE_ACTION_PLAN.md) for detailed debugging steps**
+
+---
+
 ## Overview
 
 **`mcp-agent`** is a simple, composable framework to build agents using [Model Context Protocol](https://modelcontextprotocol.io/introduction).
@@ -35,6 +70,7 @@
 1. It handles the pesky business of managing the lifecycle of MCP server connections so you don't have to.
 2. It implements every pattern described in Building Effective Agents, and does so in a _composable_ way, allowing you to chain these patterns together.
 3. **Bonus**: It implements [OpenAI's Swarm](https://github.com/openai/swarm) pattern for multi-agent orchestration, but in a model-agnostic way.
+4. **Advanced**: This fork adds sophisticated autonomous agent capabilities for self-managing workflows.
 
 Altogether, this is the simplest and easiest way to build robust agent applications. Much like MCP, this project is in early development.
 We welcome all kinds of [contributions](/CONTRIBUTING.md), feedback and your help in growing this to become a new standard.
@@ -165,6 +201,7 @@ openai:
 
 ## Table of Contents
 
+- [Current Development Status](#-current-development-status)
 - [Why use mcp-agent?](#why-use-mcp-agent)
 - [Example Applications](#examples)
   - [Claude Desktop](#claude-desktop)
@@ -296,7 +333,7 @@ Everything in the framework is a derivative of these core capabilities.
 
 ## Workflows
 
-mcp-agent provides implementations for every pattern in Anthropic’s [Building Effective Agents](https://www.anthropic.com/research/building-effective-agents), as well as the OpenAI [Swarm](https://github.com/openai/swarm) pattern.
+mcp-agent provides implementations for every pattern in Anthropic's [Building Effective Agents](https://www.anthropic.com/research/building-effective-agents), as well as the OpenAI [Swarm](https://github.com/openai/swarm) pattern.
 Each pattern is model-agnostic, and exposed as an `AugmentedLLM`, making everything very composable.
 
 ### AugmentedLLM
@@ -425,7 +462,7 @@ Just like a Router, mcp-agent provides both an [embedding](src/mcp_agent/workflo
 
 ![Evaluator-optimizer workflow (Image credit: Anthropic)](https://www.anthropic.com/_next/image?url=https%3A%2F%2Fwww-cdn.anthropic.com%2Fimages%2F4zrzovbb%2Fwebsite%2F14f51e6406ccb29e695da48b17017e899a6119c7-2401x1000.png&w=3840&q=75)
 
-One LLM (the “optimizer”) refines a response, another (the “evaluator”) critiques it until a response exceeds a quality criteria.
+One LLM (the "optimizer") refines a response, another (the "evaluator") critiques it until a response exceeds a quality criteria.
 
 > [!NOTE]
 >
@@ -550,7 +587,7 @@ orchestrator = Orchestrator(
 
 ### Signaling and Human Input
 
-**Signaling**: The framework can pause/resume tasks. The agent or LLM might “signal” that it needs user input, so the workflow awaits. A developer may signal during a workflow to seek approval or review before continuing with a workflow.
+**Signaling**: The framework can pause/resume tasks. The agent or LLM might "signal" that it needs user input, so the workflow awaits. A developer may signal during a workflow to seek approval or review before continuing with a workflow.
 
 **Human Input**: If an Agent has a `human_input_callback`, the LLM can call a `__human_input__` tool to request user input mid-workflow.
 
@@ -698,6 +735,8 @@ There have already been incredible community contributors who are driving this p
 - [Jason Summer (@jasonsum)](https://github.com/jasonsum) -- for identifying several issues and adapting his Gmail MCP server to work with mcp-agent
 
 ## Roadmap
+
+📊 **See [PROJECT_ROADMAP.md](./PROJECT_ROADMAP.md) for complete development roadmap**
 
 We will be adding a detailed roadmap (ideally driven by your feedback). The current set of priorities include:
 

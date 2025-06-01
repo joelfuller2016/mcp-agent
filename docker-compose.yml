@@ -1,0 +1,135 @@
+version: '3.8'
+
+services:
+  # Main MCP-Agent service with autonomous capabilities
+  mcp-agent:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: mcp-agent-autonomous
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./logs:/app/logs
+      - ./examples:/app/examples
+      - ./data:/app/data
+      - ./config:/app/config
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONPATH=/app
+      - MCP_AUTONOMOUS_MODE=true
+      - MCP_LOG_LEVEL=info
+      - MCP_AUTONOMOUS_CONFIG_PATH=/app/config/autonomous.yaml
+      # Add API keys via environment variables for security
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+    networks:
+      - mcp-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import sys; sys.path.insert(0, '/app/src'); from mcp_agent.autonomous.task_analyzer import TaskAnalyzer; TaskAnalyzer().analyze_task('test')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Test service for autonomous functionality
+  mcp-agent-test:
+    build: .
+    container_name: mcp-agent-test-autonomous
+    command: ["uv", "run", "python", "/app/docker/test_autonomous_deployment.py"]
+    volumes:
+      - ./tests:/app/tests
+      - ./logs:/app/logs
+      - ./src:/app/src
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONPATH=/app
+      - MCP_AUTONOMOUS_MODE=true
+      - MCP_LOG_LEVEL=debug
+      - MCP_TEST_MODE=true
+    networks:
+      - mcp-network
+    depends_on:
+      mcp-agent:
+        condition: service_healthy
+
+  # Production-ready autonomous service
+  mcp-agent-production:
+    build:
+      context: .
+      dockerfile: Dockerfile.autonomous
+      target: production
+    container_name: mcp-agent-prod-autonomous
+    ports:
+      - "8001:8000"
+    volumes:
+      - mcp-logs:/app/logs
+      - mcp-data:/app/data
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONPATH=/app
+      - MCP_AUTONOMOUS_MODE=true
+      - MCP_LOG_LEVEL=warn
+      - MCP_AUTONOMOUS_CONFIG_PATH=/app/config/autonomous.yaml
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+    networks:
+      - mcp-network
+    restart: unless-stopped
+    profiles:
+      - production
+
+  # SQLite database for autonomous agent data persistence
+  mcp-database:
+    image: alpine:latest
+    container_name: mcp-agent-database
+    volumes:
+      - mcp-data:/data
+    command: ["sh", "-c", "apk add --no-cache sqlite && tail -f /dev/null"]
+    networks:
+      - mcp-network
+    profiles:
+      - database
+
+  # Development service with live reload
+  mcp-agent-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.autonomous
+      target: development
+    container_name: mcp-agent-dev-autonomous
+    ports:
+      - "8002:8000"
+    volumes:
+      - ./src:/app/src
+      - ./examples:/app/examples
+      - ./config:/app/config
+      - ./logs:/app/logs
+      - ./tests:/app/tests
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONPATH=/app
+      - MCP_AUTONOMOUS_MODE=true
+      - MCP_LOG_LEVEL=debug
+      - MCP_DEV_MODE=true
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+    networks:
+      - mcp-network
+    profiles:
+      - development
+    command: ["sh", "-c", "while true; do uv run python /app/docker/test_autonomous_deployment.py; sleep 300; done"]
+
+networks:
+  mcp-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+
+volumes:
+  logs:
+  mcp-logs:
+  mcp-data:
+

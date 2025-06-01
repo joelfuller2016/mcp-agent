@@ -1,0 +1,81 @@
+version: '3.8'
+
+services:
+  # Development environment
+  mcp-agent-dev:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.dev
+    container_name: mcp-agent-dev
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+      - /app/.venv  # Don't override .venv
+      - ./logs:/app/logs
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONPATH=/app
+      - LOG_LEVEL=debug
+    networks:
+      - mcp-network
+    command: ["tail", "-f", "/dev/null"]  # Keep container running for development
+
+  # Production environment
+  mcp-agent-prod:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.prod
+    container_name: mcp-agent-prod
+    ports:
+      - "8001:8000"
+    volumes:
+      - ./logs:/app/logs
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONPATH=/app
+      - LOG_LEVEL=info
+    networks:
+      - mcp-network
+    restart: unless-stopped
+
+  # Test runner
+  mcp-agent-test:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.dev
+    container_name: mcp-agent-test
+    volumes:
+      - .:/app
+      - /app/.venv
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONPATH=/app
+    networks:
+      - mcp-network
+    command: ["uv", "run", "python", "-m", "pytest", "tests/", "-v"]
+
+  # Example runner for demonstrations
+  mcp-agent-example:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.dev
+    container_name: mcp-agent-example
+    volumes:
+      - ./examples:/app/examples
+      - ./logs:/app/logs
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONPATH=/app
+    networks:
+      - mcp-network
+    working_dir: /app/examples/basic/mcp_basic_agent
+    command: ["uv", "run", "python", "main.py"]
+
+networks:
+  mcp-network:
+    driver: bridge
+
+volumes:
+  logs:
+    driver: local

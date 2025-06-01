@@ -1,0 +1,39 @@
+# Simplified Dockerfile for Testing MCP-Agent
+# This is for testing purposes only - primary usage is MCP directly in Claude
+
+FROM python:3.11-slim
+
+# Set working directory
+WORKDIR /app
+
+# Install minimal system dependencies
+RUN apt-get update && apt-get install -y \
+    git \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install UV package manager
+RUN pip install uv
+
+# Copy project files
+COPY . /app/
+
+# Install Python dependencies
+RUN uv sync
+
+# Create test directories
+RUN mkdir -p logs data config
+
+# Set environment variables
+ENV PYTHONPATH=/app
+ENV PYTHONUNBUFFERED=1
+ENV MCP_LOG_LEVEL=info
+
+# Health check for autonomous components
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD python -c "import sys; sys.path.insert(0, '/app/src'); from mcp_agent.autonomous.task_analyzer import TaskAnalyzer; TaskAnalyzer().analyze_task('test')" || exit 1
+
+# Expose port for potential testing interface
+EXPOSE 8000
+
+# Default command runs autonomous test
+CMD ["uv", "run", "python", "validate_autonomous_clean.py"]

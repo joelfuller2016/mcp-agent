@@ -1,0 +1,10 @@
+{
+  "tests/mcp/test_mcp_connection_manager.py::test_launch_server_success[asyncio]": true,
+  "tests/mcp/test_mcp_connection_manager.py::test_get_server_returns_existing_healthy[asyncio]": true,
+  "tests/mcp/test_mcp_connection_manager.py::test_get_server_recreates_unhealthy[asyncio]": true,
+  "tests/mcp/test_mcp_connection_manager.py::test_get_server_capabilities[asyncio]": true,
+  "tests/mcp/test_mcp_connection_manager.py::test_launch_server_success[trio]": true,
+  "tests/mcp/test_mcp_connection_manager.py::test_get_server_returns_existing_healthy[trio]": true,
+  "tests/mcp/test_mcp_connection_manager.py::test_get_server_recreates_unhealthy[trio]": true,
+  "tests/mcp/test_mcp_connection_manager.py::test_get_server_capabilities[trio]": true
+}

@@ -13,12 +13,14 @@ from dataclasses import dataclass, asdict
 from datetime import datetime, timedelta
 from enum import Enum
 
-from .task_analyzer import TaskAnalysis, TaskComplexity, WorkflowPattern
+from .task_analyzer import TaskAnalysis, TaskComplexity
+from .decision_engine import WorkflowPattern
 from .tool_discovery import ToolCapability
 
 
 class IssueType(Enum):
     """Types of GitHub issues."""
+
     FEATURE = "feature"
     BUG = "bug"
     ENHANCEMENT = "enhancement"
@@ -30,6 +32,7 @@ class IssueType(Enum):
 
 class Priority(Enum):
     """Priority levels."""
+
     CRITICAL = "critical"
     HIGH = "high"
     MEDIUM = "medium"
@@ -39,6 +42,7 @@ class Priority(Enum):
 @dataclass
 class GitHubIssue:
     """GitHub issue specification."""
+
     title: str
     body: str
     labels: List[str]
@@ -53,6 +57,7 @@ class GitHubIssue:
 @dataclass
 class GitHubMilestone:
     """GitHub milestone specification."""
+
     title: str
     description: str
     due_date: Optional[str] = None
@@ -62,6 +67,7 @@ class GitHubMilestone:
 @dataclass
 class ProjectPlan:
     """Complete project plan."""
+
     name: str
     description: str
     milestones: List[GitHubMilestone]
@@ -74,11 +80,11 @@ class ProjectPlan:
 
 class GitHubProjectManager:
     """Automated GitHub project management and planning."""
-    
+
     def __init__(self, github_token: Optional[str] = None):
         self.github_token = github_token
         self.logger = logging.getLogger(__name__)
-        
+
         # Template for autonomous capabilities project
         self.autonomous_project_template = {
             "phases": [
@@ -88,10 +94,10 @@ class GitHubProjectManager:
                     "duration_weeks": 2,
                     "components": [
                         "Tool Discovery Agent",
-                        "Task Analyzer", 
+                        "Task Analyzer",
                         "Strategy Selector",
-                        "Project Structure Analysis"
-                    ]
+                        "Project Structure Analysis",
+                    ],
                 },
                 {
                     "name": "Agent Infrastructure",
@@ -101,19 +107,19 @@ class GitHubProjectManager:
                         "Dynamic Agent Factory",
                         "MCP Installer",
                         "Agent Lifecycle Management",
-                        "Resource Management"
-                    ]
+                        "Resource Management",
+                    ],
                 },
                 {
-                    "name": "Orchestration & Coordination", 
+                    "name": "Orchestration & Coordination",
                     "description": "Autonomous orchestration and workflow management",
                     "duration_weeks": 3,
                     "components": [
                         "Autonomous Orchestrator",
                         "Workflow Pattern Integration",
                         "Multi-Agent Coordination",
-                        "Reasoning Integration"
-                    ]
+                        "Reasoning Integration",
+                    ],
                 },
                 {
                     "name": "Integration & Testing",
@@ -123,8 +129,8 @@ class GitHubProjectManager:
                         "End-to-End Integration",
                         "Autonomous Testing Suite",
                         "Performance Optimization",
-                        "Documentation"
-                    ]
+                        "Documentation",
+                    ],
                 },
                 {
                     "name": "Enhancement & Deployment",
@@ -134,38 +140,38 @@ class GitHubProjectManager:
                         "Advanced Reasoning",
                         "Security Hardening",
                         "Monitoring & Observability",
-                        "Production Deployment"
-                    ]
-                }
+                        "Production Deployment",
+                    ],
+                },
             ]
         }
-    
-    async def create_autonomous_mcp_project_plan(self, 
-                                               repository: str,
-                                               existing_capabilities: List[ToolCapability] = None) -> ProjectPlan:
+
+    async def create_autonomous_mcp_project_plan(
+        self, repository: str, existing_capabilities: List[ToolCapability] = None
+    ) -> ProjectPlan:
         """Create a comprehensive project plan for autonomous MCP-agent capabilities."""
         self.logger.info(f"Creating autonomous MCP project plan for {repository}")
-        
+
         existing_capabilities = existing_capabilities or []
-        
+
         # Generate milestones based on template
         milestones = []
         start_date = datetime.now()
         current_date = start_date
-        
+
         for phase in self.autonomous_project_template["phases"]:
             milestone = await self._create_phase_milestone(
                 phase, current_date, existing_capabilities
             )
             milestones.append(milestone)
             current_date += timedelta(weeks=phase["duration_weeks"])
-        
+
         # Calculate total estimated hours
         total_hours = sum(
             sum(issue.estimated_hours or 8 for issue in milestone.issues or [])
             for milestone in milestones
         )
-        
+
         # Create project plan
         project_plan = ProjectPlan(
             name="Autonomous MCP-Agent Enhancement",
@@ -177,21 +183,23 @@ class GitHubProjectManager:
             total_estimated_hours=total_hours,
             start_date=start_date.isoformat(),
             target_completion=current_date.isoformat(),
-            repository=repository
+            repository=repository,
         )
-        
+
         return project_plan
-    
-    async def _create_phase_milestone(self, 
-                                    phase: Dict[str, Any],
-                                    start_date: datetime,
-                                    existing_capabilities: List[ToolCapability]) -> GitHubMilestone:
+
+    async def _create_phase_milestone(
+        self,
+        phase: Dict[str, Any],
+        start_date: datetime,
+        existing_capabilities: List[ToolCapability],
+    ) -> GitHubMilestone:
         """Create a milestone for a project phase."""
         due_date = start_date + timedelta(weeks=phase["duration_weeks"])
-        
+
         # Generate issues for this phase
         issues = []
-        
+
         if phase["name"] == "Foundation & Analysis":
             issues.extend(await self._create_foundation_issues())
         elif phase["name"] == "Agent Infrastructure":
@@ -202,14 +210,14 @@ class GitHubProjectManager:
             issues.extend(await self._create_integration_issues())
         elif phase["name"] == "Enhancement & Deployment":
             issues.extend(await self._create_enhancement_issues())
-        
+
         return GitHubMilestone(
             title=phase["name"],
             description=phase["description"],
             due_date=due_date.isoformat(),
-            issues=issues
+            issues=issues,
         )
-    
+
     async def _create_foundation_issues(self) -> List[GitHubIssue]:
         """Create issues for foundation phase."""
         return [
@@ -241,7 +249,7 @@ Create a ToolDiscoveryAgent that can automatically discover and map MCP server c
                 labels=["enhancement", "autonomous", "high-priority"],
                 priority=Priority.HIGH,
                 issue_type=IssueType.FEATURE,
-                estimated_hours=16
+                estimated_hours=16,
             ),
             GitHubIssue(
                 title="Implement Task Analyzer for Autonomous Decision Making",
@@ -271,7 +279,7 @@ Create a TaskAnalyzer that can understand task complexity and requirements for a
                 labels=["enhancement", "autonomous", "analysis"],
                 priority=Priority.HIGH,
                 issue_type=IssueType.FEATURE,
-                estimated_hours=20
+                estimated_hours=20,
             ),
             GitHubIssue(
                 title="Create Strategy Selector for Workflow Pattern Selection",
@@ -301,10 +309,10 @@ Implement intelligent strategy selection for choosing optimal workflow patterns 
                 labels=["enhancement", "autonomous", "strategy"],
                 priority=Priority.HIGH,
                 issue_type=IssueType.FEATURE,
-                estimated_hours=18
-            )
+                estimated_hours=18,
+            ),
         ]
-    
+
     async def _create_agent_infrastructure_issues(self) -> List[GitHubIssue]:
         """Create issues for agent infrastructure phase."""
         return [
@@ -336,7 +344,7 @@ Create a factory for dynamically creating specialized agents based on task requi
                 labels=["enhancement", "autonomous", "agents"],
                 priority=Priority.HIGH,
                 issue_type=IssueType.FEATURE,
-                estimated_hours=24
+                estimated_hours=24,
             ),
             GitHubIssue(
                 title="Implement MCP Installer for Ad-hoc Tool Installation",
@@ -366,7 +374,7 @@ Create an MCP installer that can discover and install new MCP servers on-demand.
                 labels=["enhancement", "autonomous", "installation"],
                 priority=Priority.MEDIUM,
                 issue_type=IssueType.FEATURE,
-                estimated_hours=20
+                estimated_hours=20,
             ),
             GitHubIssue(
                 title="Create Agent Lifecycle Management System",
@@ -396,10 +404,10 @@ Implement comprehensive agent lifecycle management for creation, execution, and 
                 labels=["enhancement", "infrastructure", "agents"],
                 priority=Priority.MEDIUM,
                 issue_type=IssueType.FEATURE,
-                estimated_hours=16
-            )
+                estimated_hours=16,
+            ),
         ]
-    
+
     async def _create_orchestration_issues(self) -> List[GitHubIssue]:
         """Create issues for orchestration phase."""
         return [
@@ -431,7 +439,7 @@ Create the main autonomous orchestrator that coordinates all components for full
                 labels=["enhancement", "autonomous", "orchestration"],
                 priority=Priority.CRITICAL,
                 issue_type=IssueType.FEATURE,
-                estimated_hours=32
+                estimated_hours=32,
             ),
             GitHubIssue(
                 title="Integrate Reasoning Tools (mcp-reasoner, sequential-thinking)",
@@ -461,7 +469,7 @@ Integrate advanced reasoning capabilities using mcp-reasoner and sequential-thin
                 labels=["enhancement", "reasoning", "integration"],
                 priority=Priority.HIGH,
                 issue_type=IssueType.FEATURE,
-                estimated_hours=20
+                estimated_hours=20,
             ),
             GitHubIssue(
                 title="Implement Multi-Agent Coordination",
@@ -491,10 +499,10 @@ Enhance the system with sophisticated multi-agent coordination capabilities.
                 labels=["enhancement", "coordination", "agents"],
                 priority=Priority.HIGH,
                 issue_type=IssueType.FEATURE,
-                estimated_hours=28
-            )
+                estimated_hours=28,
+            ),
         ]
-    
+
     async def _create_integration_issues(self) -> List[GitHubIssue]:
         """Create issues for integration phase."""
         return [
@@ -526,7 +534,7 @@ Create comprehensive integration tests for all autonomous capabilities.
                 labels=["testing", "integration", "autonomous"],
                 priority=Priority.HIGH,
                 issue_type=IssueType.TESTING,
-                estimated_hours=24
+                estimated_hours=24,
             ),
             GitHubIssue(
                 title="Performance Optimization",
@@ -556,7 +564,7 @@ Optimize performance of autonomous capabilities for production use.
                 labels=["performance", "optimization", "infrastructure"],
                 priority=Priority.MEDIUM,
                 issue_type=IssueType.ENHANCEMENT,
-                estimated_hours=16
+                estimated_hours=16,
             ),
             GitHubIssue(
                 title="Documentation and Examples",
@@ -586,10 +594,10 @@ Create comprehensive documentation and examples for autonomous capabilities.
                 labels=["documentation", "examples", "user-experience"],
                 priority=Priority.MEDIUM,
                 issue_type=IssueType.DOCUMENTATION,
-                estimated_hours=20
-            )
+                estimated_hours=20,
+            ),
         ]
-    
+
     async def _create_enhancement_issues(self) -> List[GitHubIssue]:
         """Create issues for enhancement phase."""
         return [
@@ -621,7 +629,7 @@ Implement advanced reasoning capabilities for complex problem solving.
                 labels=["enhancement", "reasoning", "advanced"],
                 priority=Priority.LOW,
                 issue_type=IssueType.FEATURE,
-                estimated_hours=32
+                estimated_hours=32,
             ),
             GitHubIssue(
                 title="Security Hardening",
@@ -651,7 +659,7 @@ Implement security measures for autonomous operation in production environments.
                 labels=["security", "production", "infrastructure"],
                 priority=Priority.HIGH,
                 issue_type=IssueType.ENHANCEMENT,
-                estimated_hours=24
+                estimated_hours=24,
             ),
             GitHubIssue(
                 title="Production Deployment and Monitoring",
@@ -681,16 +689,18 @@ Prepare the system for production deployment with monitoring and observability.
                 labels=["deployment", "monitoring", "production"],
                 priority=Priority.MEDIUM,
                 issue_type=IssueType.INFRASTRUCTURE,
-                estimated_hours=20
-            )
+                estimated_hours=20,
+            ),
         ]
-    
-    async def export_project_plan_to_github(self, 
-                                          project_plan: ProjectPlan,
-                                          create_issues: bool = False,
-                                          create_milestones: bool = False) -> Dict[str, Any]:
+
+    async def export_project_plan_to_github(
+        self,
+        project_plan: ProjectPlan,
+        create_issues: bool = False,
+        create_milestones: bool = False,
+    ) -> Dict[str, Any]:
         """Export project plan to GitHub format."""
-        
+
         # Export to GitHub-compatible format
         github_export = {
             "project": {
@@ -699,22 +709,22 @@ Prepare the system for production deployment with monitoring and observability.
                 "repository": project_plan.repository,
                 "total_estimated_hours": project_plan.total_estimated_hours,
                 "start_date": project_plan.start_date,
-                "target_completion": project_plan.target_completion
+                "target_completion": project_plan.target_completion,
             },
             "milestones": [],
-            "issues": []
+            "issues": [],
         }
-        
+
         # Convert milestones
         for milestone in project_plan.milestones:
             milestone_data = {
                 "title": milestone.title,
                 "description": milestone.description,
                 "due_date": milestone.due_date,
-                "issues": len(milestone.issues or [])
+                "issues": len(milestone.issues or []),
             }
             github_export["milestones"].append(milestone_data)
-            
+
             # Convert issues
             for issue in milestone.issues or []:
                 issue_data = {
@@ -724,15 +734,15 @@ Prepare the system for production deployment with monitoring and observability.
                     "milestone": milestone.title,
                     "priority": issue.priority.value,
                     "type": issue.issue_type.value,
-                    "estimated_hours": issue.estimated_hours
+                    "estimated_hours": issue.estimated_hours,
                 }
                 github_export["issues"].append(issue_data)
-        
+
         return github_export
-    
+
     async def create_project_readme_section(self, project_plan: ProjectPlan) -> str:
         """Create a README section for the autonomous capabilities."""
-        
+
         readme_section = f"""
 # 🤖 Autonomous MCP-Agent Capabilities
 
@@ -901,12 +911,12 @@ Check out `examples/autonomous/` for comprehensive examples including:
 
 *🤖 This project enhances mcp-agent with autonomous capabilities that can discover tools, create agents, and execute complex workflows without human intervention, while maintaining the safety and transparency needed for production use.*
 """
-        
+
         return readme_section
-    
+
     def generate_github_actions_workflow(self) -> str:
         """Generate GitHub Actions workflow for autonomous testing."""
-        
+
         workflow = """
 name: Autonomous MCP-Agent CI/CD
 
@@ -1049,5 +1059,5 @@ jobs:
         name: benchmark-results
         path: benchmark.json
 """
-        
+
         return workflow

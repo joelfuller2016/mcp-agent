@@ -1,0 +1,73 @@
+{
+  "timestamp": "2025-05-31T21:56:38.376028",
+  "target_time_ms": 500,
+  "test_description": "Baseline performance measurement for MCP-Agent autonomous components",
+  "results": {
+    "TaskAnalyzer": {
+      "component": "TaskAnalyzer",
+      "total_tests": 75,
+      "successful_tests": 75,
+      "failed_tests": 0,
+      "error_rate": 0.0,
+      "avg_time_ms": 0.021818666136823595,
+      "avg_time_us": 21.818666136823595,
+      "min_time_ms": 0.0024999972083605826,
+      "max_time_ms": 0.15520000306423753,
+      "std_time_ms": 0.026102069676099193,
+      "target_compliance": 100.0,
+      "methods_tested": [
+        "_detect_task_type",
+        "_extract_requirements",
+        "_estimate_steps",
+        "_assess_complexity",
+        "analyze_task"
+      ],
+      "slowest_operations": [
+        {
+          "method": "analyze_task",
+          "execution_time_ms": 0.15520000306423753
+        },
+        {
+          "method": "analyze_task",
+          "execution_time_ms": 0.08499999967170879
+        },
+        {
+          "method": "analyze_task",
+          "execution_time_ms": 0.08069999603321776
+        }
+      ]
+    },
+    "DecisionEngine": {
+      "component": "DecisionEngine",
+      "total_tests": 24,
+      "successful_tests": 24,
+      "failed_tests": 0,
+      "error_rate": 0.0,
+      "avg_time_ms": 0.027400000059666734,
+      "avg_time_us": 27.400000059666734,
+      "min_time_ms": 0.009200004569720477,
+      "max_time_ms": 0.08489999891025946,
+      "std_time_ms": 0.023004045573791543,
+      "target_compliance": 100.0,
+      "methods_tested": [
+        "_identify_capabilities",
+        "analyze_task",
+        "_assess_complexity"
+      ],
+      "slowest_operations": [
+        {
+          "method": "analyze_task",
+          "execution_time_ms": 0.08489999891025946
+        },
+        {
+          "method": "analyze_task",
+          "execution_time_ms": 0.08000000525498763
+        },
+        {
+          "method": "analyze_task",
+          "execution_time_ms": 0.055900003644637764
+        }
+      ]
+    }
+  }
+}

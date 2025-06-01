@@ -1,0 +1,127 @@
+# Enhanced Dockerfile for MCP-Agent with Full Autonomous Support
+FROM python:3.11-slim as base
+
+# Set working directory
+WORKDIR /app
+
+# Install system dependencies for autonomous operations
+RUN apt-get update && apt-get install -y \
+    git \
+    curl \
+    wget \
+    build-essential \
+    nodejs \
+    npm \
+    sqlite3 \
+    jq \
+    ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install UV package manager for fast dependency management
+RUN pip install uv
+
+# Install global Node.js packages for MCP servers
+RUN npm install -g \
+    @modelcontextprotocol/server-filesystem \
+    @modelcontextprotocol/server-fetch \
+    @modelcontextprotocol/server-git \
+    @modelcontextprotocol/server-sqlite \
+    && npm cache clean --force
+
+# Install uvx for Python tools and common MCP servers
+RUN pip install uvx && \
+    uvx install mcp-server-fetch && \
+    uvx install mcp-server-git && \
+    uvx install mcp-server-sqlite
+
+# Development stage - includes dev dependencies and tools
+FROM base as development
+
+# Copy project files
+COPY . /app/
+
+# Install Python dependencies including dev dependencies
+RUN uv sync --dev
+
+# Install the mcp-agent package in development mode
+RUN uv pip install -e .
+
+# Create necessary directories
+RUN mkdir -p logs examples/autonomous data/autonomous
+
+# Set environment variables for development
+ENV PYTHONPATH=/app
+ENV PYTHONUNBUFFERED=1
+ENV MCP_AUTONOMOUS_MODE=true
+ENV MCP_LOG_LEVEL=debug
+ENV MCP_AUTONOMOUS_CONFIG_PATH=/app/config/autonomous.yaml
+
+# Create autonomous configuration
+RUN mkdir -p /app/config && cat > /app/config/autonomous.yaml << 'EOF'
+autonomous:
+  enabled: true
+  max_agents: 5
+  max_execution_time: 300
+  default_llm_provider: openai
+  enable_fallbacks: true
+  log_decisions: true
+  require_human_approval: false
+
+tool_discovery:
+  auto_discovery: true
+  discovery_interval: 300
+  max_concurrent_discoveries: 5
+  enable_dynamic_installation: true
+
+performance:
+  enable_caching: true
+  cache_ttl: 3600
+  enable_parallel_discovery: true
+  metrics_retention_days: 30
+EOF
+
+# Production stage - minimal runtime
+FROM base as production
+
+# Copy only necessary files from development
+COPY --from=development /app/src /app/src
+COPY --from=development /app/pyproject.toml /app/
+COPY --from=development /app/uv.lock /app/
+COPY --from=development /app/examples /app/examples
+COPY --from=development /app/config /app/config
+
+# Install production dependencies only
+RUN uv sync --no-dev
+
+# Install the package
+RUN uv pip install -e .
+
+# Create logs directory
+RUN mkdir -p logs data
+
+# Set production environment variables
+ENV PYTHONPATH=/app
+ENV PYTHONUNBUFFERED=1
+ENV MCP_AUTONOMOUS_MODE=true
+ENV MCP_LOG_LEVEL=info
+ENV MCP_AUTONOMOUS_CONFIG_PATH=/app/config/autonomous.yaml
+
+# Create non-root user for security
+RUN groupadd -r mcpagent && useradd -r -g mcpagent mcpagent
+RUN chown -R mcpagent:mcpagent /app
+USER mcpagent
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD python -c "import sys; sys.path.insert(0, '/app/src'); from mcp_agent.autonomous.task_analyzer import TaskAnalyzer; TaskAnalyzer().analyze_task('test')" || exit 1
+
+# Expose port for potential web interface
+EXPOSE 8000
+
+# Default command runs autonomous deployment test
+CMD ["uv", "run", "python", "/app/docker/test_autonomous_deployment.py"]
+
+# Multi-architecture support
+LABEL org.opencontainers.image.source="https://github.com/joelfuller2016/mcp-agent"
+LABEL org.opencontainers.image.description="MCP-Agent with Autonomous Capabilities"
+LABEL org.opencontainers.image.licenses="MIT"

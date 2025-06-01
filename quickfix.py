@@ -8,13 +8,14 @@ import os
 import sys
 from pathlib import Path
 
+
 def ensure_init_file(directory_path, content=None):
     """Ensure __init__.py exists in a directory with proper content."""
     init_path = Path(directory_path) / "__init__.py"
-    
+
     if not init_path.exists():
         print(f"Creating missing {init_path}")
-        with open(init_path, 'w') as f:
+        with open(init_path, "w") as f:
             if content:
                 f.write(content)
             else:
@@ -23,6 +24,7 @@ def ensure_init_file(directory_path, content=None):
     else:
         print(f"✅ {init_path} already exists")
         return False
+
 
 def fix_autonomous_init():
     """Fix the autonomous module __init__.py with proper imports."""
@@ -87,14 +89,15 @@ __all__ = [
     "map_capabilities",
 ]
 '''
-    
+
     autonomous_init_path = Path("src/mcp_agent/autonomous/__init__.py")
     print(f"Updating {autonomous_init_path} with proper imports...")
-    
-    with open(autonomous_init_path, 'w') as f:
+
+    with open(autonomous_init_path, "w") as f:
         f.write(autonomous_init_content)
-    
+
     print("✅ Updated autonomous/__init__.py")
+
 
 def fix_capabilities_init():
     """Fix the capabilities module __init__.py."""
@@ -112,20 +115,21 @@ except ImportError as e:
 
 __all__ = ["CapabilityMapper"]
 '''
-    
+
     capabilities_init_path = Path("src/mcp_agent/capabilities/__init__.py")
     print(f"Updating {capabilities_init_path} with proper imports...")
-    
-    with open(capabilities_init_path, 'w') as f:
+
+    with open(capabilities_init_path, "w") as f:
         f.write(capabilities_init_content)
-    
+
     print("✅ Updated capabilities/__init__.py")
+
 
 def check_and_fix_dependencies():
     """Check if all required dependencies are installed."""
     required_packages = [
         "fastapi",
-        "instructor", 
+        "instructor",
         "pydantic",
         "pyyaml",
         "rich",
@@ -139,9 +143,9 @@ def check_and_fix_dependencies():
         "anthropic",
         "openai",
     ]
-    
+
     missing_packages = []
-    
+
     for package in required_packages:
         try:
             __import__(package.replace("-", "_"))
@@ -149,32 +153,33 @@ def check_and_fix_dependencies():
         except ImportError:
             print(f"❌ {package}: Missing")
             missing_packages.append(package)
-    
+
     if missing_packages:
         print(f"\n🔧 To install missing packages:")
         print(f"uv add {' '.join(missing_packages)}")
         return False
-    
+
     return True
+
 
 def main():
     print("=" * 50)
     print("MCP-AGENT QUICK FIX SCRIPT")
     print("=" * 50)
-    
+
     # Change to project root
     project_root = Path(__file__).parent
     os.chdir(project_root)
-    
+
     print(f"Working directory: {project_root}")
-    
+
     # Ensure all __init__.py files exist
     print("\n🔧 FIXING __INIT__.PY FILES")
     print("-" * 25)
-    
+
     directories = [
         "src/mcp_agent",
-        "src/mcp_agent/agents", 
+        "src/mcp_agent/agents",
         "src/mcp_agent/autonomous",
         "src/mcp_agent/capabilities",
         "src/mcp_agent/cli",
@@ -183,36 +188,39 @@ def main():
         "src/mcp_agent/workflows/llm",
         "src/mcp_agent/mcp",
     ]
-    
+
     for directory in directories:
         ensure_init_file(directory)
-    
+
     # Fix specific module imports
     print("\n🔧 FIXING MODULE IMPORTS")
     print("-" * 25)
-    
+
     fix_autonomous_init()
     fix_capabilities_init()
-    
+
     # Check dependencies
     print("\n🔧 CHECKING DEPENDENCIES")
     print("-" * 25)
-    
+
     deps_ok = check_and_fix_dependencies()
-    
+
     # Final recommendations
     print("\n📋 NEXT STEPS")
     print("-" * 15)
-    
+
     print("1. Run: python diagnostic.py")
     print("2. If still failing, run: uv install --all-extras")
-    print("3. Test autonomous imports: python -c 'from mcp_agent.autonomous import AutonomousOrchestrator'")
+    print(
+        "3. Test autonomous imports: python -c 'from mcp_agent.autonomous import AutonomousOrchestrator'"
+    )
     print("4. Run full tests: python test_autonomous.py")
-    
+
     if not deps_ok:
         print("5. Install missing dependencies first!")
-    
+
     print("\n✨ Quick fix complete!")
+
 
 if __name__ == "__main__":
     main()

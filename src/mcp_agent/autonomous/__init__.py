@@ -1,67 +1,101 @@
 """
 Autonomous agent capabilities for MCP-Agent.
 
-This module provides advanced autonomous features.
-Currently using stub implementations to resolve import issues.
+This module provides advanced autonomous features including:
+- AutonomousOrchestrator: Self-managing workflow execution
+- DynamicAgentFactory: Runtime agent creation based on requirements  
+- TaskAnalyzer: Intelligent task decomposition and planning
+- ToolDiscoveryAgent: Automatic capability detection and mapping
+- AutonomousDecisionEngine: Strategic decision making for workflows
+- MetaCoordinator: High-level orchestration and supervision
 """
 
-# Temporary stub implementations to resolve import issues
-class AutonomousOrchestrator:
-    """Stub implementation of AutonomousOrchestrator."""
-    def __init__(self, *args, **kwargs):
-        print("AutonomousOrchestrator: Using stub implementation")
-        pass
-    
-    async def initialize(self):
-        return True
-        
-    async def execute_autonomous_task(self, task_description, context=None):
-        return f"Stub result for: {task_description}"
+# Import the actual implementations
+from .autonomous_orchestrator import AutonomousOrchestrator
+from .dynamic_agent_factory import DynamicAgentFactory
+from .task_analyzer import TaskAnalyzer
+from .tool_discovery import ToolDiscoveryAgent, MCPServerInfo, ToolCapability
+from .decision_engine import (
+    AutonomousDecisionEngine,
+    TaskAnalysis,
+    StrategyRecommendation, 
+    WorkflowPattern,
+    TaskComplexity
+)
+from .meta_coordinator import MetaCoordinator
 
-class DynamicAgentFactory:
-    """Stub implementation of DynamicAgentFactory."""
-    def __init__(self, *args, **kwargs):
-        print("DynamicAgentFactory: Using stub implementation")
-        pass
+# For backward compatibility, provide aliases
+DecisionEngine = AutonomousDecisionEngine
+ToolDiscovery = ToolDiscoveryAgent
 
-class TaskAnalyzer:
-    """Stub implementation of TaskAnalyzer."""
-    def __init__(self, *args, **kwargs):
-        print("TaskAnalyzer: Using stub implementation")
-        pass
-        
-    def analyze_task(self, task_description):
-        return f"Analysis for: {task_description}"
-
-class DecisionEngine:
-    """Stub implementation of DecisionEngine."""
-    def __init__(self, *args, **kwargs):
-        print("DecisionEngine: Using stub implementation")
-        pass
-
-class MetaCoordinator:
-    """Stub implementation of MetaCoordinator."""
-    def __init__(self, *args, **kwargs):
-        print("MetaCoordinator: Using stub implementation")
-        pass
-
-# Additional convenience functions
-async def execute_autonomous_task(task_description: str):
+# Convenience functions for easy access
+async def execute_autonomous_task(task_description: str, context=None):
     """Convenience function to execute a task autonomously."""
     orchestrator = AutonomousOrchestrator()
-    return await orchestrator.execute_autonomous_task(task_description)
+    await orchestrator.initialize()
+    return await orchestrator.execute_autonomous_task(task_description, context)
+
 
 async def analyze_task_requirements(task_description: str):
     """Convenience function to analyze task requirements."""
     analyzer = TaskAnalyzer()
     return analyzer.analyze_task(task_description)
 
+
+def create_dynamic_agent(name: str, capabilities: list, **kwargs):
+    """Convenience function to create a dynamic agent."""
+    factory = DynamicAgentFactory()
+    return factory.create_agent(name, capabilities, **kwargs)
+
+
+async def discover_available_tools(connection_manager=None):
+    """Convenience function to discover available MCP tools."""
+    if connection_manager is None:
+        # Import here to avoid circular imports
+        from ..mcp.mcp_connection_manager import MCPConnectionManager
+        from ..context import get_current_context
+        context = get_current_context()
+        connection_manager = MCPConnectionManager(context.server_registry)
+    
+    discovery_agent = ToolDiscoveryAgent(connection_manager)
+    return await discovery_agent.discover_available_servers()
+
+
+def analyze_and_recommend_strategy(task_description: str, available_servers=None):
+    """Convenience function for decision analysis."""
+    if available_servers is None:
+        available_servers = []
+    
+    decision_engine = AutonomousDecisionEngine()
+    return decision_engine.analyze_and_recommend(task_description, available_servers)
+
+
+# Export all public classes and functions
 __all__ = [
+    # Core autonomous classes
     "AutonomousOrchestrator",
     "DynamicAgentFactory", 
     "TaskAnalyzer",
-    "DecisionEngine",
+    "ToolDiscoveryAgent",
+    "AutonomousDecisionEngine",
     "MetaCoordinator",
+    
+    # Data classes and enums
+    "TaskAnalysis",
+    "StrategyRecommendation",
+    "WorkflowPattern", 
+    "TaskComplexity",
+    "MCPServerInfo",
+    "ToolCapability",
+    
+    # Backward compatibility aliases
+    "DecisionEngine",
+    "ToolDiscovery",
+    
+    # Convenience functions
     "execute_autonomous_task",
-    "analyze_task_requirements",
+    "analyze_task_requirements", 
+    "create_dynamic_agent",
+    "discover_available_tools",
+    "analyze_and_recommend_strategy",
 ]

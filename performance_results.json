@@ -1,0 +1,850 @@
+{
+  "TaskAnalyzer": {
+    "summary": {
+      "total_calls": 68,
+      "successful_calls": 68,
+      "failed_calls": 0,
+      "avg_execution_time_ms": 0.21640588174170047,
+      "min_execution_time_ms": 0.07309999637072906,
+      "max_execution_time_ms": 1.866499995230697,
+      "std_execution_time_ms": 0.2554663133915522,
+      "avg_memory_used_mb": 0.00034466911764705885,
+      "peak_memory_used_mb": 0.0078125,
+      "error_rate": 0.0,
+      "methods_tested": [
+        "_extract_requirements",
+        "analyze_task",
+        "_assess_complexity",
+        "_detect_task_type"
+      ]
+    },
+    "detailed_metrics": [
+      {
+        "method": "analyze_task",
+        "execution_time_ms": 0.6534999993164092,
+        "memory_used_mb": 0.0078125,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.574003",
+        "error_message": ""
+      },
+      {
+        "method": "_detect_task_type",
+        "execution_time_ms": 0.1036000030580908,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.574172",
+        "error_message": ""
+      },
+      {
+        "method": "_assess_complexity",
+        "execution_time_ms": 0.09259999933419749,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.574317",
+        "error_message": ""
+      },
+      {
+        "method": "_extract_requirements",
+        "execution_time_ms": 0.14430000010179356,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.574557",
+        "error_message": ""
+      },
+      {
+        "method": "analyze_task",
+        "execution_time_ms": 0.46609999844804406,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.575110",
+        "error_message": ""
+      },
+      {
+        "method": "_detect_task_type",
+        "execution_time_ms": 0.12900000001536682,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.575334",
+        "error_message": ""
+      },
+      {
+        "method": "_assess_complexity",
+        "execution_time_ms": 0.0881000014487654,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.575473",
+        "error_message": ""
+      },
+      {
+        "method": "_extract_requirements",
+        "execution_time_ms": 0.1436000020476058,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.575705",
+        "error_message": ""
+      },
+      {
+        "method": "analyze_task",
+        "execution_time_ms": 0.599299994064495,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.576374",
+        "error_message": ""
+      },
+      {
+        "method": "_detect_task_type",
+        "execution_time_ms": 0.09960000170394778,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.576525",
+        "error_message": ""
+      },
+      {
+        "method": "_assess_complexity",
+        "execution_time_ms": 0.08540000271750614,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.576655",
+        "error_message": ""
+      },
+      {
+        "method": "_extract_requirements",
+        "execution_time_ms": 0.28699999529635534,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.577098",
+        "error_message": ""
+      },
+      {
+        "method": "analyze_task",
+        "execution_time_ms": 0.5137999978614971,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.577677",
+        "error_message": ""
+      },
+      {
+        "method": "_detect_task_type",
+        "execution_time_ms": 0.09539999882690609,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.577819",
+        "error_message": ""
+      },
+      {
+        "method": "_assess_complexity",
+        "execution_time_ms": 0.07709999772487208,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.577940",
+        "error_message": ""
+      },
+      {
+        "method": "_extract_requirements",
+        "execution_time_ms": 0.1779000012902543,
+        "memory_used_mb": -0.00390625,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.578209",
+        "error_message": ""
+      },
+      {
+        "method": "analyze_task",
+        "execution_time_ms": 0.4322000022511929,
+        "memory_used_mb": 0.00390625,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.578695",
+        "error_message": ""
+      },
+      {
+        "method": "_detect_task_type",
+        "execution_time_ms": 0.08879999950295314,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.578831",
+        "error_message": ""
+      },
+      {
+        "method": "_assess_complexity",
+        "execution_time_ms": 0.09020000288728625,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.578965",
+        "error_message": ""
+      },
+      {
+        "method": "_extract_requirements",
+        "execution_time_ms": 0.15500000154133886,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.579208",
+        "error_message": ""
+      },
+      {
+        "method": "analyze_task",
+        "execution_time_ms": 0.4214000000501983,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.579681",
+        "error_message": ""
+      },
+      {
+        "method": "_detect_task_type",
+        "execution_time_ms": 0.08689999958733097,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.579815",
+        "error_message": ""
+      },
+      {
+        "method": "_assess_complexity",
+        "execution_time_ms": 0.08299999899463728,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.579945",
+        "error_message": ""
+      },
+      {
+        "method": "_extract_requirements",
+        "execution_time_ms": 0.13609999587060884,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.580176",
+        "error_message": ""
+      },
+      {
+        "method": "analyze_task",
+        "execution_time_ms": 0.4065000030095689,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.580631",
+        "error_message": ""
+      },
+      {
+        "method": "_detect_task_type",
+        "execution_time_ms": 0.08169999637175351,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.580758",
+        "error_message": ""
+      },
+      {
+        "method": "_assess_complexity",
+        "execution_time_ms": 0.07829999958630651,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.580887",
+        "error_message": ""
+      },
+      {
+        "method": "_extract_requirements",
+        "execution_time_ms": 0.1266999970539473,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.581103",
+        "error_message": ""
+      },
+      {
+        "method": "analyze_task",
+        "execution_time_ms": 0.3989999968325719,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.581554",
+        "error_message": ""
+      },
+      {
+        "method": "_detect_task_type",
+        "execution_time_ms": 0.08799999341135845,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.581687",
+        "error_message": ""
+      },
+      {
+        "method": "_assess_complexity",
+        "execution_time_ms": 0.0822000001790002,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.581824",
+        "error_message": ""
+      },
+      {
+        "method": "_extract_requirements",
+        "execution_time_ms": 0.13240000407677144,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.582050",
+        "error_message": ""
+      },
+      {
+        "method": "analyze_task",
+        "execution_time_ms": 1.866499995230697,
+        "memory_used_mb": 0.00390625,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.584295",
+        "error_message": ""
+      },
+      {
+        "method": "_detect_task_type",
+        "execution_time_ms": 0.1660999987507239,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.584547",
+        "error_message": ""
+      },
+      {
+        "method": "_assess_complexity",
+        "execution_time_ms": 0.09370000043418258,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.584690",
+        "error_message": ""
+      },
+      {
+        "method": "_extract_requirements",
+        "execution_time_ms": 0.15669999993406236,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.584935",
+        "error_message": ""
+      },
+      {
+        "method": "analyze_task",
+        "execution_time_ms": 0.5622999960905872,
+        "memory_used_mb": 0.00390625,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.585561",
+        "error_message": ""
+      },
+      {
+        "method": "_detect_task_type",
+        "execution_time_ms": 0.14229999942472205,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.585803",
+        "error_message": ""
+      },
+      {
+        "method": "_assess_complexity",
+        "execution_time_ms": 0.08359999628737569,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.585932",
+        "error_message": ""
+      },
+      {
+        "method": "_extract_requirements",
+        "execution_time_ms": 0.17490000027464703,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.586200",
+        "error_message": ""
+      },
+      {
+        "method": "analyze_task",
+        "execution_time_ms": 0.43899999582208693,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.586694",
+        "error_message": ""
+      },
+      {
+        "method": "_detect_task_type",
+        "execution_time_ms": 0.08469999738736078,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.586828",
+        "error_message": ""
+      },
+      {
+        "method": "_assess_complexity",
+        "execution_time_ms": 0.08149999484885484,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.586955",
+        "error_message": ""
+      },
+      {
+        "method": "_extract_requirements",
+        "execution_time_ms": 0.13210000179242343,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.587167",
+        "error_message": ""
+      },
+      {
+        "method": "analyze_task",
+        "execution_time_ms": 0.43030000233557075,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.587648",
+        "error_message": ""
+      },
+      {
+        "method": "_detect_task_type",
+        "execution_time_ms": 0.08420000085607171,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.587776",
+        "error_message": ""
+      },
+      {
+        "method": "_assess_complexity",
+        "execution_time_ms": 0.08659999730298296,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.587928",
+        "error_message": ""
+      },
+      {
+        "method": "_extract_requirements",
+        "execution_time_ms": 0.12469999637687579,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.588137",
+        "error_message": ""
+      },
+      {
+        "method": "analyze_task",
+        "execution_time_ms": 0.3915999986929819,
+        "memory_used_mb": 0.00390625,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.588582",
+        "error_message": ""
+      },
+      {
+        "method": "_detect_task_type",
+        "execution_time_ms": 0.08499999967170879,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.588713",
+        "error_message": ""
+      },
+      {
+        "method": "_assess_complexity",
+        "execution_time_ms": 0.07979999645613134,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.588847",
+        "error_message": ""
+      },
+      {
+        "method": "_extract_requirements",
+        "execution_time_ms": 0.1264000020455569,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.589058",
+        "error_message": ""
+      },
+      {
+        "method": "analyze_task",
+        "execution_time_ms": 0.3826000029221177,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.589489",
+        "error_message": ""
+      },
+      {
+        "method": "_detect_task_type",
+        "execution_time_ms": 0.08040000102482736,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.589614",
+        "error_message": ""
+      },
+      {
+        "method": "_assess_complexity",
+        "execution_time_ms": 0.07870000263210386,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.589748",
+        "error_message": ""
+      },
+      {
+        "method": "_extract_requirements",
+        "execution_time_ms": 0.13819999730912969,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.589964",
+        "error_message": ""
+      },
+      {
+        "method": "analyze_task",
+        "execution_time_ms": 0.3843000013148412,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.590398",
+        "error_message": ""
+      },
+      {
+        "method": "_detect_task_type",
+        "execution_time_ms": 0.08239999442594126,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.590525",
+        "error_message": ""
+      },
+      {
+        "method": "_assess_complexity",
+        "execution_time_ms": 0.08330000127898529,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.590651",
+        "error_message": ""
+      },
+      {
+        "method": "_extract_requirements",
+        "execution_time_ms": 0.13329999637790024,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.590865",
+        "error_message": ""
+      },
+      {
+        "method": "analyze_task",
+        "execution_time_ms": 0.3651000006357208,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.591281",
+        "error_message": ""
+      },
+      {
+        "method": "_detect_task_type",
+        "execution_time_ms": 0.08070000330917537,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.591406",
+        "error_message": ""
+      },
+      {
+        "method": "_assess_complexity",
+        "execution_time_ms": 0.0822000001790002,
+        "memory_used_mb": 0.00390625,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.591545",
+        "error_message": ""
+      },
+      {
+        "method": "_extract_requirements",
+        "execution_time_ms": 0.12490000517573208,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.591751",
+        "error_message": ""
+      },
+      {
+        "method": "analyze_task",
+        "execution_time_ms": 0.3828999979305081,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.592180",
+        "error_message": ""
+      },
+      {
+        "method": "_detect_task_type",
+        "execution_time_ms": 0.07370000093942508,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.592299",
+        "error_message": ""
+      },
+      {
+        "method": "_assess_complexity",
+        "execution_time_ms": 0.07309999637072906,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.592414",
+        "error_message": ""
+      },
+      {
+        "method": "_extract_requirements",
+        "execution_time_ms": 0.13310000213095918,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.592631",
+        "error_message": ""
+      }
+    ]
+  },
+  "ToolDiscovery": {
+    "summary": {
+      "total_calls": 8,
+      "successful_calls": 8,
+      "failed_calls": 0,
+      "avg_execution_time_ms": 0.20691249756055186,
+      "min_execution_time_ms": 0.10929999552899972,
+      "max_execution_time_ms": 0.276400001894217,
+      "std_execution_time_ms": 0.04976529215174807,
+      "avg_memory_used_mb": 0.00048828125,
+      "peak_memory_used_mb": 0.00390625,
+      "error_rate": 0.0,
+      "methods_tested": [
+        "_analyze_server_capabilities",
+        "_build_capability_map",
+        "_discover_from_registries",
+        "get_best_servers_for_task"
+      ]
+    },
+    "detailed_metrics": [
+      {
+        "method": "_discover_from_registries",
+        "execution_time_ms": 0.276400001894217,
+        "memory_used_mb": 0.00390625,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.594419",
+        "error_message": ""
+      },
+      {
+        "method": "_analyze_server_capabilities",
+        "execution_time_ms": 0.1767999929143116,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.594748",
+        "error_message": ""
+      },
+      {
+        "method": "_build_capability_map",
+        "execution_time_ms": 0.10929999552899972,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.594963",
+        "error_message": ""
+      },
+      {
+        "method": "get_best_servers_for_task",
+        "execution_time_ms": 0.23159999545896426,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.595251",
+        "error_message": ""
+      },
+      {
+        "method": "get_best_servers_for_task",
+        "execution_time_ms": 0.1956999985850416,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.595493",
+        "error_message": ""
+      },
+      {
+        "method": "get_best_servers_for_task",
+        "execution_time_ms": 0.21359999664127827,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.595762",
+        "error_message": ""
+      },
+      {
+        "method": "get_best_servers_for_task",
+        "execution_time_ms": 0.20909999875584617,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.596015",
+        "error_message": ""
+      },
+      {
+        "method": "get_best_servers_for_task",
+        "execution_time_ms": 0.24280000070575625,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.596302",
+        "error_message": ""
+      }
+    ]
+  },
+  "DecisionEngine": {
+    "summary": {
+      "total_calls": 22,
+      "successful_calls": 22,
+      "failed_calls": 0,
+      "avg_execution_time_ms": 0.3110681817898612,
+      "min_execution_time_ms": 0.2556999970693141,
+      "max_execution_time_ms": 0.4250999991199933,
+      "std_execution_time_ms": 0.044315346410421404,
+      "avg_memory_used_mb": 0.0005326704545454545,
+      "peak_memory_used_mb": 0.00390625,
+      "error_rate": 0.0,
+      "methods_tested": [
+        "task_analyzer.analyze_task",
+        "strategy_selector.select_strategy"
+      ]
+    },
+    "detailed_metrics": [
+      {
+        "method": "task_analyzer.analyze_task",
+        "execution_time_ms": 0.42219999886583537,
+        "memory_used_mb": 0.00390625,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.597571",
+        "error_message": ""
+      },
+      {
+        "method": "task_analyzer.analyze_task",
+        "execution_time_ms": 0.33140000596176833,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.597962",
+        "error_message": ""
+      },
+      {
+        "method": "task_analyzer.analyze_task",
+        "execution_time_ms": 0.3209999995306134,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.598337",
+        "error_message": ""
+      },
+      {
+        "method": "task_analyzer.analyze_task",
+        "execution_time_ms": 0.2995000031660311,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.598688",
+        "error_message": ""
+      },
+      {
+        "method": "task_analyzer.analyze_task",
+        "execution_time_ms": 0.2958999975817278,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.599036",
+        "error_message": ""
+      },
+      {
+        "method": "task_analyzer.analyze_task",
+        "execution_time_ms": 0.30339999648276716,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.599390",
+        "error_message": ""
+      },
+      {
+        "method": "task_analyzer.analyze_task",
+        "execution_time_ms": 0.30169999809004366,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.599743",
+        "error_message": ""
+      },
+      {
+        "method": "task_analyzer.analyze_task",
+        "execution_time_ms": 0.31229999876813963,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.600107",
+        "error_message": ""
+      },
+      {
+        "method": "task_analyzer.analyze_task",
+        "execution_time_ms": 0.29600000561913475,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.600458",
+        "error_message": ""
+      },
+      {
+        "method": "task_analyzer.analyze_task",
+        "execution_time_ms": 0.28419999580364674,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.600794",
+        "error_message": ""
+      },
+      {
+        "method": "task_analyzer.analyze_task",
+        "execution_time_ms": 0.3028999999514781,
+        "memory_used_mb": 0.00390625,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.601164",
+        "error_message": ""
+      },
+      {
+        "method": "task_analyzer.analyze_task",
+        "execution_time_ms": 0.3846000035991892,
+        "memory_used_mb": 0.00390625,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.601607",
+        "error_message": ""
+      },
+      {
+        "method": "task_analyzer.analyze_task",
+        "execution_time_ms": 0.3053999971598387,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.601970",
+        "error_message": ""
+      },
+      {
+        "method": "task_analyzer.analyze_task",
+        "execution_time_ms": 0.30250000418163836,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.602327",
+        "error_message": ""
+      },
+      {
+        "method": "task_analyzer.analyze_task",
+        "execution_time_ms": 0.2882999979192391,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.602679",
+        "error_message": ""
+      },
+      {
+        "method": "task_analyzer.analyze_task",
+        "execution_time_ms": 0.27709999994840473,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.603007",
+        "error_message": ""
+      },
+      {
+        "method": "task_analyzer.analyze_task",
+        "execution_time_ms": 0.2917000019806437,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.603351",
+        "error_message": ""
+      },
+      {
+        "method": "strategy_selector.select_strategy",
+        "execution_time_ms": 0.4250999991199933,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.604121",
+        "error_message": ""
+      },
+      {
+        "method": "strategy_selector.select_strategy",
+        "execution_time_ms": 0.29879999783588573,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.604736",
+        "error_message": ""
+      },
+      {
+        "method": "strategy_selector.select_strategy",
+        "execution_time_ms": 0.2556999970693141,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.605319",
+        "error_message": ""
+      },
+      {
+        "method": "strategy_selector.select_strategy",
+        "execution_time_ms": 0.27319999935571104,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.605895",
+        "error_message": ""
+      },
+      {
+        "method": "strategy_selector.select_strategy",
+        "execution_time_ms": 0.2706000013859011,
+        "memory_used_mb": 0.0,
+        "success": true,
+        "timestamp": "2025-05-31T22:35:08.606497",
+        "error_message": ""
+      }
+    ]
+  }
+}

@@ -1,0 +1,45 @@
+# Development Dockerfile - optimized for fast iteration
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    git \
+    curl \
+    build-essential \
+    nodejs \
+    npm \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install UV and uvx
+RUN pip install uv uvx
+
+# Install MCP servers
+RUN npm install -g @modelcontextprotocol/server-filesystem
+RUN uvx install mcp-server-fetch
+
+# Copy requirements first for better caching
+COPY pyproject.toml uv.lock ./
+
+# Install dependencies
+RUN uv sync --dev
+
+# Copy source code
+COPY . .
+
+# Install in development mode
+RUN uv pip install -e .
+
+# Create logs directory
+RUN mkdir -p logs
+
+# Set environment variables
+ENV PYTHONPATH=/app
+ENV PYTHONUNBUFFERED=1
+ENV UV_SYSTEM_PYTHON=1
+
+EXPOSE 8000
+
+# Default to development mode
+CMD ["uv", "run", "python", "docker/test_docker_deployment.py"]

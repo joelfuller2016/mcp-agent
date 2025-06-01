@@ -7,36 +7,40 @@ through pattern recognition, user preference learning, and performance optimizat
 
 Key Components:
 - AdaptiveLearningEngine: Central coordinator for all learning activities
-- LearningDatabase: Async SQLite-based storage for learning data
+- LearningDatabase: Async SQLite-based storage for learning data (NEW in v3.1.1)
 - ExecutionPatternLearner: Learns from workflow execution patterns
 - UserPreferenceLearner: Personalizes behavior based on user preferences
 - PerformanceOptimizer: Continuously optimizes algorithm performance
 
 Performance Requirements:
 - Sub-millisecond learning hooks (<0.01ms overhead)
-- Async, non-blocking database operations (<0.005ms)
+- Async, non-blocking database operations (<5ms)
 - Maintains 100% system reliability
 - Backward compatible with existing components
 """
 
 from .adaptive_learning_engine import AdaptiveLearningEngine
+from .learning_database import LearningDatabase
 from .learning_models import (
     ExecutionPattern,
     LearningContext,
     PerformanceMetrics,
     LearningModule,
     PatternType,
-    LearningMetrics
+    LearningMetrics,
+    PatternFilters
 )
 
 __all__ = [
     "AdaptiveLearningEngine",
-    "ExecutionPattern", 
+    "LearningDatabase",
+    "ExecutionPattern",
     "LearningContext",
     "PerformanceMetrics",
     "LearningModule",
     "PatternType",
-    "LearningMetrics"
+    "LearningMetrics",
+    "PatternFilters"
 ]
 
-__version__ = "3.1.0"
+__version__ = "3.1.1"

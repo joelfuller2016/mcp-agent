@@ -1,0 +1,45 @@
+{
+  "timestamp": "2025-05-31T23:29:10.915676",
+  "using_optimized_components": true,
+  "total_tests": 3,
+  "successful_tests": 0,
+  "success_rate": 0.0,
+  "results": [
+    {
+      "workflow_name": "Simple Web Research",
+      "success": false,
+      "total_time_ms": 12.669799994910136,
+      "component_times": {
+        "task_analysis": 0.32189999910769984,
+        "tool_discovery": 12.014500003715511,
+        "server_selection": 0.09889999637380242
+      },
+      "error_message": "unhashable type: 'TaskAnalysis'",
+      "steps_completed": 3
+    },
+    {
+      "workflow_name": "Data Analysis Task",
+      "success": false,
+      "total_time_ms": 10.04300000204239,
+      "component_times": {
+        "task_analysis": 0.2975000024889596,
+        "tool_discovery": 9.277399993152358,
+        "server_selection": 0.16870000399649143
+      },
+      "error_message": "unhashable type: 'TaskAnalysis'",
+      "steps_completed": 3
+    },
+    {
+      "workflow_name": "Quick File Operation",
+      "success": false,
+      "total_time_ms": 8.507000005920418,
+      "component_times": {
+        "task_analysis": 0.2550999997765757,
+        "tool_discovery": 7.903600002464373,
+        "server_selection": 0.09999999747378752
+      },
+      "error_message": "unhashable type: 'TaskAnalysis'",
+      "steps_completed": 3
+    }
+  ]
+}

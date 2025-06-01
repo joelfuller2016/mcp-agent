@@ -1,0 +1,70 @@
+{
+  "timestamp": "2025-05-31T23:37:46.798738",
+  "using_optimized_components": true,
+  "total_tests": 4,
+  "successful_tests": 3,
+  "results": [
+    {
+      "test_name": "Baseline_FAILED",
+      "concurrent_users": 1,
+      "total_requests": 5,
+      "successful_requests": 0,
+      "failed_requests": 5,
+      "success_rate": 0.0,
+      "avg_response_time_ms": 0,
+      "min_response_time_ms": 0,
+      "max_response_time_ms": 0,
+      "p95_response_time_ms": 0,
+      "requests_per_second": 0,
+      "errors": [
+        "max_workers must be greater than 0"
+      ],
+      "performance_target_met": true
+    },
+    {
+      "test_name": "3_users_5_requests",
+      "concurrent_users": 3,
+      "total_requests": 15,
+      "successful_requests": 15,
+      "failed_requests": 0,
+      "success_rate": 100.0,
+      "avg_response_time_ms": 12.813486667679777,
+      "min_response_time_ms": 10.257599999022204,
+      "max_response_time_ms": 16.17229999828851,
+      "p95_response_time_ms": 16.17229999828851,
+      "requests_per_second": 229.6394048971457,
+      "errors": [],
+      "performance_target_met": true
+    },
+    {
+      "test_name": "5_users_5_requests",
+      "concurrent_users": 5,
+      "total_requests": 25,
+      "successful_requests": 25,
+      "failed_requests": 0,
+      "success_rate": 100.0,
+      "avg_response_time_ms": 10.548819999676198,
+      "min_response_time_ms": 8.90639999852283,
+      "max_response_time_ms": 15.202800001134165,
+      "p95_response_time_ms": 14.75370000116527,
+      "requests_per_second": 445.96508631565973,
+      "errors": [],
+      "performance_target_met": true
+    },
+    {
+      "test_name": "10_users_4_requests",
+      "concurrent_users": 10,
+      "total_requests": 40,
+      "successful_requests": 40,
+      "failed_requests": 0,
+      "success_rate": 100.0,
+      "avg_response_time_ms": 30.579574999319448,
+      "min_response_time_ms": 7.943899996462278,
+      "max_response_time_ms": 125.96320000011474,
+      "p95_response_time_ms": 94.8902000018279,
+      "requests_per_second": 312.3211473554847,
+      "errors": [],
+      "performance_target_met": true
+    }
+  ]
+}

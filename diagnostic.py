@@ -72,6 +72,9 @@ def main():
         "src/mcp_agent/autonomous/decision_engine.py",
         "src/mcp_agent/autonomous/meta_coordinator.py",
         "src/mcp_agent/capabilities/capability_mapper.py",
+        "src/mcp_agent/learning/__init__.py",
+        "src/mcp_agent/learning/learning_models.py",
+        "src/mcp_agent/learning/adaptive_learning_engine.py",
     ]
 
     structure_ok = True
@@ -87,6 +90,7 @@ def main():
         "src/mcp_agent/__init__.py",
         "src/mcp_agent/autonomous/__init__.py",
         "src/mcp_agent/capabilities/__init__.py",
+        "src/mcp_agent/learning/__init__.py",
     ]
 
     for init_file in init_files:
@@ -164,14 +168,34 @@ def main():
         f"Capabilities module success rate: {capabilities_success}/{len(capabilities_imports)} ({capabilities_success / len(capabilities_imports) * 100:.1f}%)"
     )
 
+    # Test learning module imports
+    print("\nLEARNING MODULE IMPORTS")
+    print("-" * 30)
+
+    learning_imports = [
+        ("mcp_agent.learning.learning_models", "ExecutionPattern"),
+        ("mcp_agent.learning.learning_models", "LearningContext"),
+        ("mcp_agent.learning.learning_models", "PerformanceMetrics"),
+        ("mcp_agent.learning.adaptive_learning_engine", "AdaptiveLearningEngine"),
+    ]
+
+    learning_success = 0
+    for module, class_name in learning_imports:
+        if test_import(module, class_name):
+            learning_success += 1
+
+    print(
+        f"Learning module success rate: {learning_success}/{len(learning_imports)} ({learning_success / len(learning_imports) * 100:.1f}%)"
+    )
+
     # Summary and recommendations
     print("\nDIAGNOSTIC SUMMARY")
     print("=" * 30)
 
     total_tests = (
-        len(core_imports) + len(autonomous_imports) + len(capabilities_imports)
+        len(core_imports) + len(autonomous_imports) + len(capabilities_imports) + len(learning_imports)
     )
-    total_success = core_success + autonomous_success + capabilities_success
+    total_success = core_success + autonomous_success + capabilities_success + learning_success
     overall_rate = total_success / total_tests * 100
 
     print(f"Overall success rate: {total_success}/{total_tests} ({overall_rate:.1f}%)")
